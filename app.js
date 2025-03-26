@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(data => {
     budget = data.amount || 0;
     document.querySelector("#budgetDisplay").textContent = budget;
+    checkBudgetAlert();
   });
 
   fetch("http://localhost:3000/expenses")
@@ -37,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const amount = parseFloat(document.querySelector("#expenseAmount").value) || 0;
 
     if (name && category && amount){
-      const newExpense = {id:Number, name, category, amount};
+      const newExpense = {id:Date.now(), name, category, amount};
       expenses.push(newExpense);
       renderExpenses();
       this.reset();
@@ -57,8 +58,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const expenseList = document.querySelector("#expenseList");
     expenseList.innerHTML = "";
     let totalExpenses = 0;
+
     expenses.forEach(expense => {
-      totalExpenses =+ expense.amount;
+      totalExpenses += expense.amount;
       expenseList.innerHTML += `
       <tr>
                   <td>${expense.name}</td>
