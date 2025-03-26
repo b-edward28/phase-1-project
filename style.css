@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: grey;
+    background-color: whitesmoke;
     margin: 0;
     padding: 0;
     display: flex;
@@ -12,8 +12,8 @@ body {
 .container {
     background: #fff;
     padding: 20px;
-    width: 90%;
-    max-width: 800px;
+    width: 100%;
+    max-width: 900px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     text-align: center;
@@ -105,8 +105,3 @@ th {
     background: #c82333;
 }
 
-.alert {
-    font-weight: bold;
-    margin-top: 10px;
-    color: red;
-}
