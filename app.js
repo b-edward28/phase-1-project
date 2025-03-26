@@ -7,7 +7,6 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(data => {
     budget = data.amount || 0;
     document.querySelector("#budgetDisplay").textContent = budget;
-    checkBudgetAlert();
   });
 
   fetch("http://localhost:3000/expenses")
@@ -63,8 +62,8 @@ document.addEventListener("DOMContentLoaded", () => {
       expenseList.innerHTML += `
       <tr>
                   <td>${expense.name}</td>
-                  <td>${expense.amount}</td>
                   <td>${expense.category}</td>
+                  <td>${expense.amount}</td>
                   <td>
                       <button class="btn-delete" data-id="${expense.id}">Delete</button>
                   </td>
