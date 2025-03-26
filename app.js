@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
               `;
     });
 
-    document.querySelector("#totalExpense").textContent = totalExpenses;
+    document.querySelector("#totalExpenses").textContent = totalExpenses;
     checkBudgetAlert(totalExpenses);
 
   }
