@@ -77,7 +77,9 @@ nav ul li a:hover {
 
 .hero p {
     font-size: 1.3rem;
-    opacity: 0.8;
+    max-width: 990px;
+    margin: auto;
+
 }
 
 .hero button {
@@ -157,6 +159,16 @@ button:hover {
 h2 {
     margin-top: 20px;
     font-size: 1.5rem;
+}
+.btn {
+    display: inline-block;
+    margin-top: 20px;
+    color: #00d4ff;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
 }
 
 #budgetDisplay, #totalExpenses {

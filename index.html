@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TrackPesa</title>
-    <link rel = "stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
@@ -12,7 +12,7 @@
             <div class="logo">TrackPesa</div>
             <ul>
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">Set Budget</a></li>
+                <li><a href="#about">About TrackPesa</a></li>
                 <li><a href="#expenditure">Monthly Expenditure</a></li>
             </ul>
         </nav>
@@ -20,9 +20,9 @@
 
     <section id="home" class="hero">
         <div class="hero-content">
-            <h1>Track your Expenses Effortlessly</h1>
-            <p>Manage your budget wisely and monitor your expenses.</p>
-            <p>TrackPesa is your ultimate budgeting companion that helps you monitor your spending and stay within your financial goals</p>
+            <h1>About</h1>
+            <p>TrackPesa simplifies budgeting, tracks expenses effortlessly, and helps you stay in control of your money.</br> 
+            Whether you are saving for a goal, managing daily expenses, or simply looking for better financial discipline, TrackPesa provides real-time insights to keep you on track.</p>
 
             <a href="#expenditure" class="btn">Click to view your monthly expenses</a>
         </div>
@@ -30,12 +30,11 @@
 
     <section id="about" class="about">
         <h2>Track your Monthly Expense</h2>
-       
     </section>
 
     <section id="expenditure" class="expenditure">
         <div class="budget-input">
-            <input type="number" id="budgeting" placeholder="Enter your monthly budget">
+            <input type="number" id="budgetInput" placeholder="Enter your monthly budget">
             <button id="setBudgetBtn">Set Budget</button>
         </div>
         <h3>Budget: KES <span id="budgetDisplay">0</span></h3>
@@ -48,11 +47,10 @@
                 <option value="Utilities">Utilities</option>
                 <option value="Insurance">Insurance</option>
                 <option value="Entertainment">Entertainment</option>
-                <option value="Others">Transport</option>
+                <option value="Others">Others</option>
             </select>
             <input type="number" id="expenseAmount" placeholder="Amount" required>
             <button type="submit" id="submitBtn">Add Expense</button>
-
         </form>
 
         <h3>Total Monthly Expenses: KES <span id="totalExpenses">0</span></h3>
@@ -76,6 +74,5 @@
     </footer>
 
     <script src="app.js"></script>
-    
 </body>
 </html>
