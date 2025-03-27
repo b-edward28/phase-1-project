@@ -88,7 +88,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     expenses.forEach(expense => {
       totalExpenses += Number(expense.amount);
-      expenseList.innerHTML+=  `
+      const row = document.createElement("tr");
+      row.innerHTML+=  `
       <tr>
                   <td>${expense.name}</td>
                   <td>${expense.category}</td>
@@ -98,6 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
                   </td>
               </tr>
               `;
+
+              expenseList.appendChild(row);
     });
 
     document.querySelector("#totalExpenses").textContent = totalExpenses;
@@ -123,6 +126,19 @@ document.addEventListener("DOMContentLoaded", () => {
       renderExpenses();
     })
     .catch(error => console.error("Error deleting expense:", error))
+  }
+
+  function checkBudgetAlert() {
+    const alertMessage = document.querySelector("#alertMessage");
+    const totalExpenses = document.reduce ((sum, expense) => sum + Number(expense.amount), 0);
+
+    if (budget > 0 && totalExpenses > budget) {
+      alertMessage.textContent = "Alert! You have exceeded your budget";
+      alertMessage.style.color = "red";
+    }else {
+      alertMessage.textContent = "You are within your budget.";
+      alertMessage.style.color = "green";
+    }
   }
 
 });
