@@ -1,4 +1,9 @@
 {
-  "budget": [],
+  "budget": [
+    {
+      "id": "639f",
+      "amount": 20000
+    }
+  ],
   "expenses": []
 }
