@@ -3,6 +3,10 @@
     {
       "id": "90e2",
       "amount": 20000
+    },
+    {
+      "id": "75a7",
+      "amount": 2900
     }
   ],
   "expenses": [
@@ -16,6 +20,12 @@
       "id": 1743053324953,
       "name": "Fuel",
       "category": "Shopping",
+      "amount": "20000"
+    },
+    {
+      "id": 1743054123411,
+      "name": "Salon",
+      "category": "Other",
       "amount": "20000"
     }
   ]

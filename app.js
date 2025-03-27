@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalExpenses = 0;
 
     expenses.forEach(expense => {
-      totalExpenses += expense.amount;
+      totalExpenses += Number(expense.amount);
       expenseList.innerHTML+=  `
       <tr>
                   <td>${expense.name}</td>
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .then(response => {
       if(!response.ok) {
-        throw new Error("Error deleting")
+        throw new Error("Error deleting");
       }
   
       expenses = expenses.filter(expense => expense.id !==expenseId);
