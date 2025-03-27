@@ -1,9 +1,16 @@
 {
   "budget": [
     {
-      "id": "639f",
+      "id": "90e2",
       "amount": 20000
     }
   ],
-  "expenses": []
+  "expenses": [
+    {
+      "id": 1743052223333,
+      "name": "Fuel",
+      "category": "Shopping",
+      "amount": "20000"
+    }
+  ]
 }

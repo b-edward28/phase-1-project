@@ -43,6 +43,44 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  document.querySelector("#expenseForm").addEventListener("submit", function(event){
+    event.preventDefault();
+    const name = document.querySelector("#expenseName").value.trim();
+    const category = document.querySelector("#expenseCategory").value.trim();
+    const amount = document.querySelector("#expenseAmount").value || 0;
+
+    if(name && category && amount) {
+      const newExpense = {id: Date.now(), name, category, amount};
+      expenses.push(newExpense);
+      renderExpenses();
+      this.reset();
+
+      fetch("http://localhost:3000/expenses", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(newExpense)
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Failed to save expense");
+        }
+        return response.json();
+      })
+      .then (savedExpense => {
+        expenses.push(savedExpense);
+        renderExpenses();
+      })
+      .catch(error => console.error("Error saving expense:", error))
+
+      this.reset();
+    } else {
+      alert("Please enter valid expense details");
+    }
+    
+  });
+
   function renderExpenses() {
     const expenseList = document.querySelector("#expenseList");
     expenseList.innerHTML = "";
