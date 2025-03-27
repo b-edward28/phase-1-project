@@ -1,4 +1,16 @@
 {
-  "budget": [],
-  "expenses": []
+  "budget": [
+    {
+      "id": "3d86",
+      "amount": 20000
+    }
+  ],
+  "expenses": [
+    {
+      "id": 1743055433890,
+      "name": "Fuel",
+      "category": "Transport",
+      "amount": "10000"
+    }
+  ]
 }

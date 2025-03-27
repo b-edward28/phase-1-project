@@ -45,8 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelector("#expenseForm").addEventListener("submit", function(event){
     event.preventDefault();
-    const name = document.querySelector("#expenseName").value.trim();
-    const category = document.querySelector("#expenseCategory").value.trim();
+    const name = document.querySelector("#expenseName").value;
+    const category = document.querySelector("#expenseCategory").value;
     const amount = document.querySelector("#expenseAmount").value || 0;
 
     if(name && category && amount) {
@@ -88,8 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     expenses.forEach(expense => {
       totalExpenses += Number(expense.amount);
-      const row = document.createElement("tr");
-      row.innerHTML+=  `
+      expenseList.innerHTML+=  `
       <tr>
                   <td>${expense.name}</td>
                   <td>${expense.category}</td>
@@ -100,10 +99,10 @@ document.addEventListener("DOMContentLoaded", () => {
               </tr>
               `;
 
-              expenseList.appendChild(row);
     });
 
     document.querySelector("#totalExpenses").textContent = totalExpenses;
+    checkBudgetAlert(totalExpenses)
 
     document.querySelectorAll(".btn-delete").forEach(button => {
       button.addEventListener("click", function() {
