@@ -1,16 +1,25 @@
 {
-  "budget": [
-    {
-      "id": "3d86",
-      "amount": 20000
-    }
-  ],
+  "budget": {
+    "amount": 50000
+  },
   "expenses": [
     {
-      "id": 1743055433890,
-      "name": "Fuel",
-      "category": "Transport",
+      "id": 1,
+      "name": "Shopping",
+      "category": "Shopping",
       "amount": "10000"
+    },
+    {
+      "id": 1743059680295,
+      "name": "Shopping",
+      "category": "Bills",
+      "amount": "66000"
+    },
+    {
+      "id": 1743059700256,
+      "name": "Salon",
+      "category": "Bills",
+      "amount": "400"
     }
   ]
 }

@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(data => {
     budget = data.amount || 0;
     document.querySelector("#budgetDisplay").textContent = budget;
+    checkBudgetAlert();
   })
 
   fetch("http://localhost:3000/expenses")
@@ -24,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       document.querySelector("#budgetDisplay").textContent = budget ;
 
       fetch("http://localhost:3000/budget", {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
@@ -102,12 +103,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     document.querySelector("#totalExpenses").textContent = totalExpenses;
-    checkBudgetAlert(totalExpenses)
+    checkBudgetAlert(totalExpenses);
 
     document.querySelectorAll(".btn-delete").forEach(button => {
       button.addEventListener("click", function() {
         const expenseId = Number(this.dataset.id);
-        deleteExpense(expenseId)
+        deleteExpense(expenseId);
       });
     });
 
@@ -124,17 +125,17 @@ document.addEventListener("DOMContentLoaded", () => {
       expenses = expenses.filter(expense => expense.id !==expenseId);
       renderExpenses();
     })
-    .catch(error => console.error("Error deleting expense:", error))
+    .catch(error => console.error("Error deleting expense:", error));
   }
 
   function checkBudgetAlert() {
     const alertMessage = document.querySelector("#alertMessage");
-    const totalExpenses = document.reduce ((sum, expense) => sum + Number(expense.amount), 0);
+    const totalExpenses = expenses.reduce ((sum, expense) => sum + Number(expense.amount), 0);
 
     if (budget > 0 && totalExpenses > budget) {
       alertMessage.textContent = "Alert! You have exceeded your budget";
       alertMessage.style.color = "red";
-    }else {
+    } else {
       alertMessage.textContent = "You are within your budget.";
       alertMessage.style.color = "green";
     }
