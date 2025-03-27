@@ -102,6 +102,27 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelector("#totalExpenses").textContent = totalExpenses;
 
+    document.querySelectorAll(".btn-delete").forEach(button => {
+      button.addEventListener("click", function() {
+        const expenseId = Number(this.dataset.id);
+        deleteExpense(expenseId)
+      });
+    });
+
+  }
+  function deleteExpense(expenseId){
+    fetch(`http://localhost:3000/expenses/${expenseId}`, {
+      method: "DELETE"
+    })
+    .then(response => {
+      if(!response.ok) {
+        throw new Error("Error deleting")
+      }
+  
+      expenses = expenses.filter(expense => expense.id !==expenseId);
+      renderExpenses();
+    })
+    .catch(error => console.error("Error deleting expense:", error))
   }
 
 });
