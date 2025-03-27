@@ -2,14 +2,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let budget = 0;
   let expenses = [];
 
-  fetch("https://phase-1-project-7oxd.onrender.com")
+  fetch("http://localhost:3000/budget")
   .then(response => response.json())
   .then(data => {
     budget = data.amount || 0;
     document.querySelector("#budgetDisplay").textContent = budget;
   });
 
-  fetch("https://phase-1-project-7oxd.onrender.com")
+  fetch("http://localhost:3000/expenses")
   .then(response => response.json())
   .then(data => {
     expenses = data;
@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
       budget = budgetInput;
       document.querySelector("#budgetDisplay").textContent = budget ;
 
-      fetch("https://phase-1-project-7oxd.onrender.com", {
+      fetch("http://localhost:3000/budget", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify()
+        body: JSON.stringify({amount: budget})
       })
       .then(response => {
         if(!response.ok){
@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if(name && category && amount) {
       const newExpense = {id: Date.now(), name, category, amount};
 
-      fetch("https://phase-1-project-7oxd.onrender.com", {
+      fetch("http://localhost:3000/expenses", {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   function deleteExpense(expenseId){
-    fetch(`https://phase-1-project-7oxd.onrender.com`, {
+    fetch(`http://localhost:3000/expenses/${expenseId}`, {
       method: "DELETE"
     })
     .then(response => {

@@ -1,107 +1,237 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: whitesmoke;
+/* Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+/* General Reset */
+* {
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    font-family: 'Inter', sans-serif;
 }
 
-.container {
-    background: #fff;
-    padding: 20px;
-    width: 100%;
-    max-width: 900px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+body {
+    background: linear-gradient(135deg, #061a4f, #642868);
+    color: #fff;
     text-align: center;
+    padding-top: 80px;
 }
 
-h1, h2 {
-    color: #333;
+/* Navigation Bar */
+nav {
+    background: rgba(255, 255, 255, 0.1);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    backdrop-filter: blur(10px);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
 }
 
-#budgetInput {
-    width: 30%;
-    padding: 8px;
-    margin-top: 5px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
+nav h1 {
+    font-size: 1.6rem;
+    font-weight: 600;
+    color: #00d4ff;
 }
 
-#setBudgetBtn {
-    background: #007BFF;
-    color: white;
+nav ul {
+    list-style: none;
+    display: flex;
+    color: aliceblue;
+}
+
+nav ul li {
+    margin: 0 15px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 700;
+    transition: color 0.3s ease-in-out;
+}
+
+nav ul li a:hover {
+    color: #00d4ff;
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    width: 90%;
+    margin: 20px auto;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.3rem;
+    opacity: 0.8;
+}
+
+.hero button {
+    background: #00d4ff;
+    color: #0a0f1c;
+    padding: 12px 20px;
     border: none;
-    padding: 8px 15px;
+    border-radius: 8px;
+    font-size: 1rem;
     cursor: pointer;
-    border-radius: 5px;
+    margin-top: 15px;
+    transition: 0.3s ease-in-out;
 }
 
-#setBudgetBtn:hover {
-    background:darkblue;
+.hero button:hover {
+    background: #008fb3;
+    color: #fff;
+    transform: scale(1.05);
 }
 
+/* Main Container */
+.container {
+    width: 80%;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
+}
+
+/* Form Styling */
 form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
     margin-top: 20px;
     align-items: center;
-    justify-content: center;
+}
+
+input, select, button {
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
 }
 
 input, select {
-    padding: 10px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    width: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
+    width: 30%;
+    text-align: center;
 }
 
-#submitBtn {
-    background: #28a745;
-    color: white;
-    border: none;
-    padding: 10px;
+input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+button {
+    background: #00d4ff;
+    color: #0a0f1c;
     cursor: pointer;
-    border-radius: 5px;
-    width: 20%;
-    display: block;
-
+    transition: 0.3s ease-in-out;
 }
 
-#submitBtn:hover {
-    background: darkgreen;
+button:hover {
+    background: #008fb3;
+    color: #fff;
+    transform: scale(1.05);
 }
 
+/* Budget & Expense Display */
+h2 {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}
+
+#budgetDisplay, #totalExpenses {
+    font-weight: 700;
+    color: #00d4ff;
+}
+
+/* Table Styling */
 table {
-    width: 90%;
+    width: 100%;
     margin-top: 20px;
     border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
 }
 
 th, td {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: center;
 }
 
 th {
-    background: rgb(229, 115, 134);
-    color: white;
+    background: #008fb3;
+    color: #fff;
 }
 
-.btn-delete {
-    background: #dc3545;
+td {
+    color: #fff;
+}
+
+td button {
+    background: red;
     color: white;
-    border: none;
-    padding: 5px 10px;
+    padding: 6px 12px;
+    border-radius: 6px;
     cursor: pointer;
-    border-radius: 5px;
+    transition: 0.3s ease-in-out;
 }
 
-.btn-delete:hover {
-    background: #c82333;
+td button:hover {
+    background: darkred;
+    transform: scale(1.1);
 }
 
+.alert {
+    font-size: 1.5rem; /* Increase font size */
+    font-weight: bold; /* Make text bold */
+    background: whitesmoke; /* Red background for visibility */
+    color: white; /* White text for contrast */
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    width: 60%;
+    max-width: 400px;
+    justify-content: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+
+}
+
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 15px;
+    margin-top: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+footer p {
+    color: #00d4ff;
+}
