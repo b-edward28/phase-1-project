@@ -7,8 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .then(data => {
     budget = data.amount || 0;
     document.querySelector("#budgetDisplay").textContent = budget;
-    checkBudgetAlert();
-  })
+  });
 
   fetch("http://localhost:3000/expenses")
   .then(response => response.json())
@@ -29,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
         headers: {
           "Content-Type": "application/json"
         },
-        body: JSON.stringify({ amount: budget})
+        body: JSON.stringify()
       })
       .then(response => {
         if(!response.ok){
@@ -52,9 +51,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(name && category && amount) {
       const newExpense = {id: Date.now(), name, category, amount};
-      expenses.push(newExpense);
-      renderExpenses();
-      this.reset();
 
       fetch("http://localhost:3000/expenses", {
         method: "POST",
@@ -64,9 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(newExpense)
       })
       .then(response => {
-        if (!response.ok) {
-          throw new Error("Failed to save expense");
-        }
+        if (!response.ok) throw new Error("Failed to save expense");
         return response.json();
       })
       .then (savedExpense => {
@@ -88,43 +82,46 @@ document.addEventListener("DOMContentLoaded", () => {
     let totalExpenses = 0;
 
     expenses.forEach(expense => {
-      totalExpenses += Number(expense.amount);
-      expenseList.innerHTML+=  `
-      <tr>
-                  <td>${expense.name}</td>
-                  <td>${expense.category}</td>
-                  <td>${expense.amount}</td>
-                  <td>
-                      <button class="btn-delete" data-id="${expense.id}">Delete</button>
-                  </td>
-              </tr>
-              `;
-
+      totalExpenses += Number(expense.amount); 
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${expense.name}</td>
+        <td>${expense.category}</td>
+        <td>${expense.amount}</td>
+        <td><button class="btn-delete" data-id="${expense.id}">Delete</button></td>
+      `;
+      expenseList.appendChild(row);
+      
     });
-
+  
     document.querySelector("#totalExpenses").textContent = totalExpenses;
-    checkBudgetAlert(totalExpenses);
-
-    document.querySelectorAll(".btn-delete").forEach(button => {
-      button.addEventListener("click", function() {
-        const expenseId = Number(this.dataset.id);
-        deleteExpense(expenseId);
-      });
-    });
-
+    checkBudgetAlert(); 
   }
+    
+    document.querySelector("#expenseList").addEventListener("click", function (event) {
+  
+      if (event.target.classList.contains("btn-delete")) {
+        const expenseId = event.target.dataset.id;
+        console.log("Delete button clicked", expenseId);
+        deleteExpense(expenseId);
+      }
+    });
+  
+
+
   function deleteExpense(expenseId){
     fetch(`http://localhost:3000/expenses/${expenseId}`, {
       method: "DELETE"
     })
     .then(response => {
-      if(!response.ok) {
-        throw new Error("Error deleting");
-      }
-  
-      expenses = expenses.filter(expense => expense.id !==expenseId);
+      if(!response.ok) throw new Error("Error deleting");
+      return response.text();
+    })
+    .then(() => {
+      expenses = expenses.filter(expense => expense.id !== expenseId);
       renderExpenses();
     })
+  
     .catch(error => console.error("Error deleting expense:", error));
   }
 
