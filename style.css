@@ -1,7 +1,5 @@
-/* Google Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
 
-/* General Reset */
 * {
     margin: 0;
     padding: 0;
@@ -16,7 +14,8 @@ body {
     padding-top: 80px;
 }
 
-/* Navigation Bar */
+
+
 nav {
     background: rgba(255, 255, 255, 0.1);
     position: fixed;
@@ -58,7 +57,19 @@ nav ul li a:hover {
     color: #00d4ff;
 }
 
-/* Hero Section */
+button:hover {
+    background: #008fb3;
+    color: #fff;
+    transform: scale(1.05);
+}
+
+button {
+    background: #00d4ff;
+    color: #0a0f1c;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
 .hero {
     text-align: center;
     padding: 40px 20px;
@@ -100,7 +111,7 @@ nav ul li a:hover {
     transform: scale(1.05);
 }
 
-/* Main Container */
+
 .container {
     width: 80%;
     margin: 40px auto;
@@ -112,7 +123,7 @@ nav ul li a:hover {
     box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.2);
 }
 
-/* Form Styling */
+
 form {
     display: flex;
     flex-direction: column;
@@ -142,33 +153,11 @@ input::placeholder {
     color: rgba(255, 255, 255, 0.6);
 }
 
-button {
-    background: #00d4ff;
-    color: #0a0f1c;
-    cursor: pointer;
-    transition: 0.3s ease-in-out;
-}
 
-button:hover {
-    background: #008fb3;
-    color: #fff;
-    transform: scale(1.05);
-}
 
-/* Budget & Expense Display */
 h2 {
     margin-top: 20px;
     font-size: 1.5rem;
-}
-.btn {
-    display: inline-block;
-    margin-top: 20px;
-    color: #00d4ff;
-    padding: 10px 20px;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 5px;
-    transition: 0.3s;
 }
 
 #budgetDisplay, #totalExpenses {
@@ -176,7 +165,7 @@ h2 {
     color: #00d4ff;
 }
 
-/* Table Styling */
+
 table {
     width: 100%;
     margin-top: 20px;
@@ -234,7 +223,7 @@ td button:hover {
 }
 
 
-/* Footer */
+
 footer {
     text-align: center;
     padding: 15px;
