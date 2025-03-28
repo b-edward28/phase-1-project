@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const budgetDisplay = document.querySelector("#budgetDisplay");
 
-  fetch("http://localhost:3000/budget")
+  fetch("https://phase-1-project-2-pldq.onrender.com/budget")
   .then(response => response.json())
   .then(data => {
     budget = data.amount || 0;
@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .catch(error => console.error("Error fetching budget:", error));
 
 
-  fetch("http://localhost:3000/expenses")
+  fetch("https://phase-1-project-2-pldq.onrender.com/expenses")
   .then(response => response.json())
   .then(data => {
     expenses = data;
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     if (enteredBudget > 0) {
       budget = enteredBudget;
       budgetDisplay.textContent = budget;
-      fetch("http://localhost:3000/budget", {
+      fetch("https://phase-1-project-2-pldq.onrender.com/budget", {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ amount: budget })
@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (name && amount > 0) {
       const newExpense = { name, category, amount }
-      fetch("http://localhost:3000/expenses", {
+      fetch("https://phase-1-project-2-pldq.onrender.com/expenses", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newExpense)
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   expenseList.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-delete")) {
       const expenseId = event.target.dataset.id;
-      fetch(`http://localhost:3000/expenses/${expenseId}`, {
+      fetch(`https://phase-1-project-2-pldq.onrender.com/expenses/${expenseId}`, {
         method: "DELETE"
       })
       .then(response => {
