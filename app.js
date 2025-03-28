@@ -99,7 +99,8 @@ document.addEventListener("DOMContentLoaded", () => {
       alertMessage.textContent = "Warning: You have exceeded your budget!";
       alertMessage.style.color = "red";
     } else {
-      alertMessage.textContent = "";
+      alertMessage.textContent = "You are within your budget";
+      alertMessage.style.color = "green";
     }
   }
 
