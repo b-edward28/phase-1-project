@@ -1,5 +1,5 @@
 # TrackPesa
-#TrackPesa is a simple budgeting and expense tracking web app designed to help users to stay within their budget.
+#TrackPesa is a simple budgeting and expense tracking web app designed to help users monitor and manage their expenses.
 
 # Features
 1. Set monthly budget
