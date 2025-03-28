@@ -2,14 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let expenses = [];
   let budget = 0;
 
-  const budgetInput = document.querySelector("#budgetInput");
-  const setBudgetBtn = document.querySelector("#setBudgetBtn");
   const budgetDisplay = document.querySelector("#budgetDisplay");
-  const expenseForm = document.querySelector("#expenseForm");
-  const expenseList = document.querySelector("#expenseList");
-  const totalExpensesDisplay = document.querySelector("#totalExpenses");
-  const alertMessage = document.querySelector("#alertMessage");
-
 
   fetch("http://localhost:3000/budget")
   .then(response => response.json())
@@ -28,6 +21,9 @@ document.addEventListener("DOMContentLoaded", () => {
   })
   .catch(error => console.error("Error fetching expenses:", error));
 
+  const budgetInput = document.querySelector("#budgetInput");
+
+  const setBudgetBtn = document.querySelector("#setBudgetBtn");
   setBudgetBtn.addEventListener("click", () => {
     const enteredBudget = parseFloat(budgetInput.value) || 0;
 
@@ -49,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const expenseForm = document.querySelector("#expenseForm");
   expenseForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const name = document.querySelector("#expenseName").value;
@@ -74,6 +71,10 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  const totalExpensesDisplay = document.querySelector("#totalExpenses");
+
+  const expenseList = document.querySelector("#expenseList");
+
   function renderExpenses() {
     expenseList.innerHTML = "";
     let totalExpenses = 0;
@@ -92,6 +93,8 @@ document.addEventListener("DOMContentLoaded", () => {
     totalExpensesDisplay.textContent = totalExpenses;
     checkBudgetAlert();
   }
+
+  const alertMessage = document.querySelector("#alertMessage");
 
   function checkBudgetAlert(){
     const totalExpenses = expenses.reduce((sum, expense) => sum + expense.amount, 0);
