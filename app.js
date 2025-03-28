@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
   .catch(error => console.error("Error fetching budget:", error));
 
 
-  fetch("https://phase-1-project-2-pldq.onrender.com/expenses")
+  fetch("http://phase-1-project-2-pldq.onrender.com/expenses")
   .then(response => response.json())
   .then(data => {
     expenses = data;
@@ -110,7 +110,7 @@ document.addEventListener("DOMContentLoaded", () => {
   expenseList.addEventListener("click", (event) => {
     if (event.target.classList.contains("btn-delete")) {
       const expenseId = event.target.dataset.id;
-      fetch(`https://phase-1-project-2-pldq.onrender.com/expenses/${expenseId}`, {
+      fetch(`http://phase-1-project-2-pldq.onrender.com/expenses/${expenseId}`, {
         method: "DELETE"
       })
       .then(response => {
